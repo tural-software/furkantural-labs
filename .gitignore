@@ -1,0 +1,28 @@
+# ============================================================
+#  .NET derleme çıktıları
+# ============================================================
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ============================================================
+#  IDE
+# ============================================================
+.vs/
+.vscode/
+.idea/
+
+# ============================================================
+#  Sırlar — ASLA commit'lenmez
+# ============================================================
+# Bağlantı dizesi user-secrets ya da ortam değişkeninden okunur.
+# appsettings.json yalnız placeholder içerir; yine de yerel override'lar dışarıda kalsın.
+appsettings.*.local.json
+*.secrets.json
+secrets.json
+.env

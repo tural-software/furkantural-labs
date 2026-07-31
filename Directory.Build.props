@@ -1,0 +1,29 @@
+<Project>
+  <PropertyGroup>
+    <!-- Global target framework -->
+    <TargetFramework>net10.0</TargetFramework>
+
+    <!-- Metadata -->
+    <Company>Tural Yazılım</Company>
+    <Authors>Furkan Tural</Authors>
+    <Copyright>© 2026 Furkan Tural</Copyright>
+
+    <!-- Shared settings -->
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <NoWarn>$(NoWarn);1510</NoWarn>
+
+    <!--
+      Tüm laboratuvarlar TEK bir secret deposunu paylaşır. Bağlantı dizesi
+      appsettings.json'a YAZILMAZ; repo public olduğu için `sa` şifresi commit'lenirse
+      geri alınamaz. Kurulum (bir kez, herhangi bir lab klasöründe):
+
+        dotnet user-secrets set "ConnectionStrings:LabsConnection" "<dize>"
+
+      Alternatif: FTLABS_ConnectionStrings__LabsConnection ortam değişkeni.
+    -->
+    <UserSecretsId>6f645544-b8b3-4d19-810c-301f31806f93</UserSecretsId>
+  </PropertyGroup>
+</Project>

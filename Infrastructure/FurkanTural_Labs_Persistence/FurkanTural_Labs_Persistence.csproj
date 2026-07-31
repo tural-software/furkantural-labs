@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <Product>FurkanTural.Labs.Persistence</Product>
+    <Description>EF Core context, seeding and the query-counting interceptor for the laboratories.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Persistence</AssemblyTitle>
+    <AssemblyDescription>Persistence layer for Furkan Tural's blog laboratories.</AssemblyDescription>
+    <RootNamespace>FurkanTural_Labs_Persistence</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- NuGet Packages -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
+    <!-- Lazy loading proxy'leri: Lab_04 N+1'in "hiç sorgu yazmadan" nasıl oluştuğunu gösteriyor. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.0" />
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\FurkanTural_Labs_Domain\FurkanTural_Labs_Domain.csproj" />
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+  </ItemGroup>
+</Project>
