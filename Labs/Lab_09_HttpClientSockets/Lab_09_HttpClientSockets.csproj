@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab09</Product>
+    <Description>Proof for blog post #9 — how many TCP connections each HttpClient strategy actually opens.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab09</AssemblyTitle>
+    <AssemblyDescription>Counts the distinct client ports the server sees for twenty sequential calls.</AssemblyDescription>
+    <RootNamespace>Lab_09_HttpClientSockets</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Web\FurkanTural_Labs_Host\FurkanTural_Labs_Host.csproj" />
+  </ItemGroup>
+</Project>

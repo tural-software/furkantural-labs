@@ -17,18 +17,36 @@ namespace FurkanTural_Labs_Application.Diagnostics;
 /// "her laboratuvar tek iddia taşır" kuralını zorlar.
 /// </para>
 /// </summary>
-/// <param name="title">Laboratuvarın başlığı.</param>
-/// <param name="claim">Kanıtlanan iddia, tek cümlede.</param>
-/// <param name="counter">Sorgu/satır sayacı. Her senaryodan önce sıfırlanır.</param>
-/// <param name="metric">
-/// Ölçüm biriminin sütun başlığı: "Sorgu", "Satır", "İzlenen"… Varsayılan
-/// <see cref="ScenarioAsync(string, Expectation, Func{Task}, string?)"/> ile uyumlu olsun
-/// diye "Sorgu"dur; başka bir birim ölçen laboratuvar
-/// <see cref="MeasureAsync"/> kullanır ve başlığı burada değiştirir.
-/// </param>
-public sealed class LabReport(string title, string claim, IQueryCounter counter, string metric = "Sorgu")
+public sealed class LabReport
 {
     private readonly List<ScenarioResult> _results = [];
+    private readonly string _title;
+    private readonly string _claim;
+    private readonly string _metric;
+    private readonly IQueryCounter? _counter;
+
+    /// <summary>Veritabanına giden laboratuvarlar için.</summary>
+    /// <param name="title">Laboratuvarın başlığı.</param>
+    /// <param name="claim">Kanıtlanan iddia, tek cümlede.</param>
+    /// <param name="counter">Sorgu/satır sayacı. Her senaryodan önce sıfırlanır.</param>
+    /// <param name="metric">
+    /// Ölçüm biriminin sütun başlığı: "Sorgu", "Satır", "İzlenen"… Varsayılan
+    /// <see cref="ScenarioAsync"/> ile uyumlu olsun diye "Sorgu"dur; başka bir birim ölçen
+    /// laboratuvar <see cref="MeasureAsync"/> kullanır ve başlığı burada değiştirir.
+    /// </param>
+    public LabReport(string title, string claim, IQueryCounter counter, string metric = "Sorgu")
+        : this(title, claim, metric)
+        => _counter = counter;
+
+    /// <summary>
+    /// Veritabanına gitmeyen laboratuvarlar için (boru hattı, DI, kayıt tutma…).
+    /// Yalnız <see cref="MeasureAsync"/> kullanılabilir.
+    /// </summary>
+    /// <param name="title">Laboratuvarın başlığı.</param>
+    /// <param name="claim">Kanıtlanan iddia, tek cümlede.</param>
+    /// <param name="metric">Ölçüm biriminin sütun başlığı.</param>
+    public LabReport(string title, string claim, string metric)
+        => (_title, _claim, _metric) = (title, claim, metric);
 
     /// <summary>Bir senaryoyu çalıştırır ve <b>sorgu sayısını</b> ölçer.</summary>
     /// <param name="name">Tabloda görünecek senaryo adı.</param>
@@ -36,7 +54,12 @@ public sealed class LabReport(string title, string claim, IQueryCounter counter,
     /// <param name="action">Ölçülecek iş.</param>
     /// <param name="note">Tablonun altına düşülecek kısa açıklama.</param>
     public Task ScenarioAsync(string name, Expectation expectation, Func<Task> action, string? note = null)
-        => RunAsync(name, expectation, async () => { await action(); return counter.Count; }, note);
+    {
+        var counter = _counter ?? throw new InvalidOperationException(
+            "Bu rapor sayaçsız kuruldu; sorgu sayan senaryo kullanılamaz. MeasureAsync kullan.");
+
+        return RunAsync(name, expectation, async () => { await action(); return counter.Count; }, note);
+    }
 
     /// <summary>
     /// Bir senaryoyu çalıştırır ve <b>işin döndürdüğü sayıyı</b> ölçer.
@@ -53,7 +76,7 @@ public sealed class LabReport(string title, string claim, IQueryCounter counter,
 
     private async Task RunAsync(string name, Expectation expectation, Func<Task<int>> measure, string? note)
     {
-        counter.Reset();
+        _counter?.Reset();
 
         // precise: true — ölçüm süresi milisaniyeler; hızlı yol tahmini burada yanıltır.
         var allocatedBefore = GC.GetTotalAllocatedBytes(precise: true);
@@ -69,17 +92,17 @@ public sealed class LabReport(string title, string claim, IQueryCounter counter,
     public int Print()
     {
         var nameWidth = Math.Max(8, _results.Max(r => r.Name.Length));
-        var metricWidth = Math.Max(6, metric.Length);
+        var metricWidth = Math.Max(6, _metric.Length);
         var expWidth = Math.Max(9, _results.Max(r => r.Expectation.Text.Length));
 
         Console.WriteLine();
-        Console.WriteLine(title);
-        Console.WriteLine(new string('═', Math.Max(title.Length, 60)));
-        Console.WriteLine($"İddia: {claim}");
+        Console.WriteLine(_title);
+        Console.WriteLine(new string('═', Math.Max(_title.Length, 60)));
+        Console.WriteLine($"İddia: {_claim}");
         Console.WriteLine();
 
         Console.WriteLine(
-            $"{"Senaryo".PadRight(nameWidth)}  {metric.PadLeft(metricWidth)}  " +
+            $"{"Senaryo".PadRight(nameWidth)}  {_metric.PadLeft(metricWidth)}  " +
             $"{"Beklenen".PadRight(expWidth)}  {"Süre",7}  {"Bellek",9}  Sonuç");
         Console.WriteLine(
             $"{new string('─', nameWidth)}  {new string('─', metricWidth)}  " +

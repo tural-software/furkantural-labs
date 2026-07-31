@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab06</Product>
+    <Description>Proof for blog post #6 — what a global exception handler changes about the response.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab06</AssemblyTitle>
+    <AssemblyDescription>Throws five different exceptions and records the status code the client actually receives.</AssemblyDescription>
+    <RootNamespace>Lab_06_GlobalExceptionHandling</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Web\FurkanTural_Labs_Host\FurkanTural_Labs_Host.csproj" />
+  </ItemGroup>
+</Project>

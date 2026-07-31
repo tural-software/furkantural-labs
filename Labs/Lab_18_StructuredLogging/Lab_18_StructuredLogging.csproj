@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab18</Product>
+    <Description>Proof for blog post #18 — what reaches the sink as a queryable field and what reaches it as text.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab18</AssemblyTitle>
+    <AssemblyDescription>Counts the correctly named and valued structured fields six logging styles produce.</AssemblyDescription>
+    <RootNamespace>Lab_18_StructuredLogging</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Web\FurkanTural_Labs_Host\FurkanTural_Labs_Host.csproj" />
+  </ItemGroup>
+</Project>

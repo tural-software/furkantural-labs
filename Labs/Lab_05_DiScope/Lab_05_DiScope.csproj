@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab05</Product>
+    <Description>Proof for blog post #5 — captive dependencies and what validation catches.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab05</AssemblyTitle>
+    <AssemblyDescription>Counts how many distinct service instances two requests produce for each lifetime.</AssemblyDescription>
+    <RootNamespace>Lab_05_DiScope</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Web\FurkanTural_Labs_Host\FurkanTural_Labs_Host.csproj" />
+  </ItemGroup>
+</Project>

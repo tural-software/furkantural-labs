@@ -12,13 +12,22 @@
   <Folder Name="/Infrastructure/">
     <Project Path="Infrastructure/FurkanTural_Labs_Persistence/FurkanTural_Labs_Persistence.csproj" />
   </Folder>
+  <Folder Name="/Web/">
+    <Project Path="Web/FurkanTural_Labs_Host/FurkanTural_Labs_Host.csproj" />
+  </Folder>
   <Folder Name="/Labs/">
     <Project Path="Labs/Lab_01_QueryableVsEnumerable/Lab_01_QueryableVsEnumerable.csproj" />
     <Project Path="Labs/Lab_02_AsNoTracking/Lab_02_AsNoTracking.csproj" />
+    <Project Path="Labs/Lab_03_MiddlewarePipeline/Lab_03_MiddlewarePipeline.csproj" />
     <Project Path="Labs/Lab_04_NPlusOne/Lab_04_NPlusOne.csproj" />
+    <Project Path="Labs/Lab_05_DiScope/Lab_05_DiScope.csproj" />
+    <Project Path="Labs/Lab_06_GlobalExceptionHandling/Lab_06_GlobalExceptionHandling.csproj" />
+    <Project Path="Labs/Lab_08_CancellationToken/Lab_08_CancellationToken.csproj" />
+    <Project Path="Labs/Lab_09_HttpClientSockets/Lab_09_HttpClientSockets.csproj" />
     <Project Path="Labs/Lab_10_Specification/Lab_10_Specification.csproj" />
     <Project Path="Labs/Lab_12_DateTimeVsOffset/Lab_12_DateTimeVsOffset.csproj" />
     <Project Path="Labs/Lab_17_SkipTakePaging/Lab_17_SkipTakePaging.csproj" />
+    <Project Path="Labs/Lab_18_StructuredLogging/Lab_18_StructuredLogging.csproj" />
     <Project Path="Labs/Lab_19_ExecuteUpdate/Lab_19_ExecuteUpdate.csproj" />
   </Folder>
 </Solution>

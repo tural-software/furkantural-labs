@@ -15,13 +15,13 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 |---|---|---|---|
 | 01 | IQueryable vs IEnumerable | [`Labs/Lab_01_QueryableVsEnumerable`](Labs/Lab_01_QueryableVsEnumerable) | ✅ |
 | 02 | AsNoTracking() | [`Labs/Lab_02_AsNoTracking`](Labs/Lab_02_AsNoTracking) | ✅ |
-| 03 | Middleware Pipeline | `Labs/Lab_03_...` | Faz 2 |
+| 03 | Middleware Pipeline | [`Labs/Lab_03_MiddlewarePipeline`](Labs/Lab_03_MiddlewarePipeline) | ✅ |
 | 04 | N+1 Problemi | [`Labs/Lab_04_NPlusOne`](Labs/Lab_04_NPlusOne) | ✅ |
-| 05 | DI Scope Hataları | `Labs/Lab_05_...` | Faz 2 |
-| 06 | Global Exception Handling | `Labs/Lab_06_...` | Faz 2 |
+| 05 | DI Scope Hataları | [`Labs/Lab_05_DiScope`](Labs/Lab_05_DiScope) | ✅ |
+| 06 | Global Exception Handling | [`Labs/Lab_06_GlobalExceptionHandling`](Labs/Lab_06_GlobalExceptionHandling) | ✅ |
 | 07 | C# Record Types | `Labs/Lab_07_...` | Faz 4 |
-| 08 | CancellationToken | `Labs/Lab_08_...` | Faz 2 |
-| 09 | HttpClient / Socket Exhaustion | `Labs/Lab_09_...` | Faz 2 |
+| 08 | CancellationToken | [`Labs/Lab_08_CancellationToken`](Labs/Lab_08_CancellationToken) | ✅ |
+| 09 | HttpClient / Socket Exhaustion | [`Labs/Lab_09_HttpClientSockets`](Labs/Lab_09_HttpClientSockets) | ✅ |
 | 10 | Specification Pattern | [`Labs/Lab_10_Specification`](Labs/Lab_10_Specification) | ✅ |
 | 11 | Memory vs Distributed Cache | `Labs/Lab_11_...` | Faz 3 |
 | 12 | DateTime vs DateTimeOffset | [`Labs/Lab_12_DateTimeVsOffset`](Labs/Lab_12_DateTimeVsOffset) | ✅ |
@@ -30,7 +30,7 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 15 | Channel&lt;T&gt; | `Labs/Lab_15_...` | Faz 4 |
 | 16 | Policy-Based Authorization | `Labs/Lab_16_...` | Faz 3 |
 | 17 | Skip/Take Sayfalama | [`Labs/Lab_17_SkipTakePaging`](Labs/Lab_17_SkipTakePaging) | ✅ |
-| 18 | Structured Logging | `Labs/Lab_18_...` | Faz 2 |
+| 18 | Structured Logging | [`Labs/Lab_18_StructuredLogging`](Labs/Lab_18_StructuredLogging) | ✅ |
 | 19 | ExecuteUpdateAsync | [`Labs/Lab_19_ExecuteUpdate`](Labs/Lab_19_ExecuteUpdate) | ✅ |
 | 20 | CORS | `Labs/Lab_20_...` | Faz 3 |
 | 21 | Output Caching | `Labs/Lab_21_...` | Faz 3 |
@@ -45,6 +45,7 @@ Core/FurkanTural_Labs_Domain/            entity'ler (BaseEntity, Blog, Category,
 Signature/FurkanTural_Labs_Application/
         Diagnostics/     LabReport, Expectation, IQueryCounter  ← ölçüm düzeneği
         Specifications/  ISpecification, BaseSpecification
+Web/FurkanTural_Labs_Host/               boru hattı ölçen laboratuvarların in-process Kestrel'i
 Infrastructure/FurkanTural_Labs_Persistence/
         Contexts/        LabsDbContext
         Configurations/  IEntityTypeConfiguration'lar
@@ -96,7 +97,9 @@ laboratuvar kırmızı yanar ve hangi yazının artık yanlış olduğunu söyle
 
 ## Kurulum
 
-Gereken: .NET 10 SDK ve erişilebilir bir SQL Server.
+Gereken: .NET 10 SDK. Veritabanı yalnızca EF laboratuvarları için gerekir (01, 02, 04,
+10, 12, 17, 19); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve SQL Server
+istemez.
 
 Bağlantı dizesi **repoda tutulmaz** — depo public. Tüm laboratuvarlar tek bir
 user-secrets kimliğini paylaşır, yani bir kez tanımlaman yeter:
