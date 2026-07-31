@@ -21,6 +21,16 @@ public static class LabsSeeder
     /// <summary>İlk kaç bloğa yorum eklenecek. N+1 için 100 blog yeterli; 1.000 rahat pay bırakır.</summary>
     public const int BlogsWithComments = 1_000;
 
+    /// <summary>Tüm tarihlerin başlangıcı. Sabit: laboratuvarlar tarih sınırlarını buradan türetir.</summary>
+    public static readonly DateTime Epoch = new(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+    /// <summary>
+    /// <paramref name="index"/> numaralı bloğun yayın anı. Sıra ile tarih birebir eşlendiği
+    /// için laboratuvarlar "son 1.000 yazı" gibi sınırları sorgu çalıştırmadan hesaplayabilir.
+    /// </summary>
+    /// <param name="index">1'den <see cref="BlogCount"/>'a kadar blog sırası.</param>
+    public static DateTime PublishedAtOf(int index) => Epoch.AddHours(index);
+
     private static readonly (string Name, string Color)[] Categories =
     [
         (".NET", "#D6F0FF"), (".NET CORE", "#89CFF0"), ("ASP.NET", "#A7C7E7"),
@@ -42,7 +52,7 @@ public static class LabsSeeder
         try
         {
             var rng = new Random(20260731);            // sabit tohum → her makinede aynı veri
-            var epoch = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            var epoch = Epoch;
 
             var categories = Categories
                 .Select(c => new Category { Name = c.Name, Color = c.Color, CreatedAt = epoch })
@@ -55,7 +65,7 @@ public static class LabsSeeder
             var blogs = new List<Blog>(BlogCount);
             for (var i = 1; i <= BlogCount; i++)
             {
-                var published = epoch.AddHours(i);
+                var published = PublishedAtOf(i);
                 blogs.Add(new Blog
                 {
                     Title = $"Laboratuvar yazısı #{i:D5}",

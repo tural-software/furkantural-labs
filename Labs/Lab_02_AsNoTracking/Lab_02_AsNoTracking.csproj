@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab02</Product>
+    <Description>Proof for blog post #2 — what the change tracker costs on read-only queries.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab02</AssemblyTitle>
+    <AssemblyDescription>Counts the entities left under change tracking by five ways of reading the same rows.</AssemblyDescription>
+    <RootNamespace>Lab_02_AsNoTracking</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Content -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FurkanTural_Labs_Persistence\FurkanTural_Labs_Persistence.csproj" />
+  </ItemGroup>
+</Project>

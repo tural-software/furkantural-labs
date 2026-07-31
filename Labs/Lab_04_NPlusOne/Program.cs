@@ -29,7 +29,7 @@ var report = new LabReport(
 await report.ScenarioAsync(
     "1) Explicit load, döngüde",
     Expectation.Exactly(1 + BlogsToLoad),
-    () => WithContextAsync(plain, async db =>
+    () => plain.ScopedAsync(async db =>
     {
         var blogs = await db.Blogs.OrderBy(b => b.Id).Take(BlogsToLoad).ToListAsync();
         foreach (var blog in blogs)
@@ -45,7 +45,7 @@ await report.ScenarioAsync(
 await report.ScenarioAsync(
     "2) Lazy loading proxy",
     Expectation.Exactly(1 + BlogsToLoad),
-    () => WithContextAsync(proxied, async db =>
+    () => proxied.ScopedAsync(async db =>
     {
         var blogs = await db.Blogs.OrderBy(b => b.Id).Take(BlogsToLoad).ToListAsync();
         return blogs.Sum(b => b.Comments.Count);   // ← tek satır, 100 gizli sorgu
@@ -56,7 +56,7 @@ await report.ScenarioAsync(
 await report.ScenarioAsync(
     "3) Include",
     Expectation.Exactly(1),
-    () => WithContextAsync(plain, async db =>
+    () => plain.ScopedAsync(async db =>
     {
         var blogs = await db.Blogs
             .Include(b => b.Comments)
@@ -74,7 +74,7 @@ await report.ScenarioAsync(
 await report.ScenarioAsync(
     "4) Include + AsSplitQuery",
     Expectation.Exactly(2),
-    () => WithContextAsync(plain, async db =>
+    () => plain.ScopedAsync(async db =>
     {
         var blogs = await db.Blogs
             .Include(b => b.Comments)
@@ -92,7 +92,7 @@ await report.ScenarioAsync(
 await report.ScenarioAsync(
     "5) Projeksiyon (Select)",
     Expectation.Exactly(1),
-    () => WithContextAsync(plain, async db =>
+    () => plain.ScopedAsync(async db =>
     {
         var rows = await db.Blogs
             .OrderBy(b => b.Id)
@@ -105,11 +105,3 @@ await report.ScenarioAsync(
     note: "Yorum gövdeleri hiç taşınmaz; sayım veritabanında yapılır.");
 
 return report.Print();
-
-// Her senaryo kendi scope'unda çalışır: paylaşılan bir context, önceki senaryonun
-// önbelleğe aldığı entity'ler yüzünden sonrakinin sorgu sayısını düşürürdü.
-static async Task WithContextAsync<T>(ServiceProvider provider, Func<LabsDbContext, Task<T>> work)
-{
-    await using var scope = provider.CreateAsyncScope();
-    await work(scope.ServiceProvider.GetRequiredService<LabsDbContext>());
-}

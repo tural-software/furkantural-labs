@@ -12,17 +12,17 @@ Ve ezberin yanlış olan tarafı: `Include` "her zaman tek sorgu" demek değildi
 
 ## Kanıt
 
-`dotnet run` çıktısı — sayılar `DbCommandInterceptor` ile komut düzeyinde sayılır,
+`dotnet run` çıktısı — komutlar `DbCommandInterceptor` ile komut düzeyinde sayılır,
 log satırı ayrıştırılmaz:
 
-```
-Senaryo                     Sorgu  Beklenen      Süre  Sonuç
-─────────────────────────  ──────  ─────────  ───────  ─────
-1) Explicit load, döngüde     101  = 101       210 ms  GEÇTİ
-2) Lazy loading proxy         101  = 101       206 ms  GEÇTİ
-3) Include                      1  = 1         109 ms  GEÇTİ
-4) Include + AsSplitQuery       2  = 2          58 ms  GEÇTİ
-5) Projeksiyon (Select)         1  = 1          22 ms  GEÇTİ
+```text
+Senaryo                     Sorgu  Beklenen      Süre     Bellek  Sonuç
+─────────────────────────  ──────  ─────────  ───────  ─────────  ─────
+1) Explicit load, döngüde     101  = 101       345 ms     5,4 MB  GEÇTİ
+2) Lazy loading proxy         101  = 101       183 ms     5,8 MB  GEÇTİ
+3) Include                      1  = 1         163 ms     1,7 MB  GEÇTİ
+4) Include + AsSplitQuery       2  = 2          91 ms     1,8 MB  GEÇTİ
+5) Projeksiyon (Select)         1  = 1          24 ms     300 KB  GEÇTİ
 ```
 
 Okuma notları:

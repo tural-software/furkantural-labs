@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab19</Product>
+    <Description>Proof for blog post #19 — bulk update with ExecuteUpdateAsync versus load-loop-save.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab19</AssemblyTitle>
+    <AssemblyDescription>Counts the commands each bulk-update strategy sends for the same one thousand rows.</AssemblyDescription>
+    <RootNamespace>Lab_19_ExecuteUpdate</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Content -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FurkanTural_Labs_Persistence\FurkanTural_Labs_Persistence.csproj" />
+  </ItemGroup>
+</Project>

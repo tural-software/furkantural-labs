@@ -8,8 +8,11 @@ public sealed class QueryCounter : IQueryCounter
     private readonly Lock _gate = new();
     private readonly List<string> _commands = [];
     private int _count;
+    private int _rows;
 
     public int Count => Volatile.Read(ref _count);
+
+    public int RowCount => Volatile.Read(ref _rows);
 
     public IReadOnlyList<string> Commands
     {
@@ -24,6 +27,7 @@ public sealed class QueryCounter : IQueryCounter
         {
             _commands.Clear();
             Volatile.Write(ref _count, 0);
+            Volatile.Write(ref _rows, 0);
         }
     }
 
@@ -33,4 +37,6 @@ public sealed class QueryCounter : IQueryCounter
         if (!CaptureSql) return;
         lock (_gate) _commands.Add(commandText);
     }
+
+    public void RecordRows(int rows) => Interlocked.Add(ref _rows, rows);
 }

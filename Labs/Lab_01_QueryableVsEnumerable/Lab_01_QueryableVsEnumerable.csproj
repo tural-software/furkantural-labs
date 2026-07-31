@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab01</Product>
+    <Description>Proof for blog post #1 — IQueryable vs IEnumerable and where the query really runs.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab01</AssemblyTitle>
+    <AssemblyDescription>Measures how many rows leave the database for four ways of writing the same filter.</AssemblyDescription>
+    <RootNamespace>Lab_01_QueryableVsEnumerable</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Content -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FurkanTural_Labs_Persistence\FurkanTural_Labs_Persistence.csproj" />
+  </ItemGroup>
+</Project>

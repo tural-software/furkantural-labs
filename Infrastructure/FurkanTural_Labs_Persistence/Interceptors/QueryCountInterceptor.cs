@@ -15,6 +15,11 @@ namespace FurkanTural_Labs_Persistence.Interceptors;
 /// Altı ucun (reader/nonquery/scalar × sync/async) hepsi ezilir; biri atlanırsa
 /// <c>ExecuteUpdate</c> ya da <c>Count()</c> gibi çağrılar sayıma girmez.
 /// </para>
+/// <para>
+/// Okuyucu kapanırken satır sayısı da bildirilir. Sorgu sayısının ayırt edemediği
+/// hataların ölçüsü budur: bellekte filtreleyen bir zincir de tek sorgu çalıştırır,
+/// ama arkasından tabloyu satır satır taşır.
+/// </para>
 /// </summary>
 public sealed class QueryCountInterceptor(IQueryCounter counter) : DbCommandInterceptor
 {
@@ -62,4 +67,16 @@ public sealed class QueryCountInterceptor(IQueryCounter counter) : DbCommandInte
         counter.Record(command.CommandText);
         return base.ScalarExecutingAsync(command, eventData, result, cancellationToken);
     }
+
+    /// <summary>Okuyucuyu satır sayan bir katmanla sarar; EF sarmalanmışını kullanır.</summary>
+    public override DbDataReader ReaderExecuted(
+        DbCommand command, CommandExecutedEventData eventData, DbDataReader result)
+        => new CountingDataReader(base.ReaderExecuted(command, eventData, result), counter);
+
+    /// <inheritdoc cref="ReaderExecuted"/>
+    public override async ValueTask<DbDataReader> ReaderExecutedAsync(
+        DbCommand command, CommandExecutedEventData eventData, DbDataReader result,
+        CancellationToken cancellationToken = default)
+        => new CountingDataReader(
+            await base.ReaderExecutedAsync(command, eventData, result, cancellationToken), counter);
 }
