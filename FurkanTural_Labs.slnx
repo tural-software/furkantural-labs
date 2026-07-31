@@ -22,6 +22,7 @@
     <Project Path="Labs/Lab_04_NPlusOne/Lab_04_NPlusOne.csproj" />
     <Project Path="Labs/Lab_05_DiScope/Lab_05_DiScope.csproj" />
     <Project Path="Labs/Lab_06_GlobalExceptionHandling/Lab_06_GlobalExceptionHandling.csproj" />
+    <Project Path="Labs/Lab_07_RecordTypes/Lab_07_RecordTypes.csproj" />
     <Project Path="Labs/Lab_08_CancellationToken/Lab_08_CancellationToken.csproj" />
     <Project Path="Labs/Lab_09_HttpClientSockets/Lab_09_HttpClientSockets.csproj" />
     <Project Path="Labs/Lab_10_Specification/Lab_10_Specification.csproj" />
@@ -29,6 +30,7 @@
     <Project Path="Labs/Lab_12_DateTimeVsOffset/Lab_12_DateTimeVsOffset.csproj" />
     <Project Path="Labs/Lab_13_OptionsLifetimes/Lab_13_OptionsLifetimes.csproj" />
     <Project Path="Labs/Lab_14_RateLimiting/Lab_14_RateLimiting.csproj" />
+    <Project Path="Labs/Lab_15_Channel/Lab_15_Channel.csproj" />
     <Project Path="Labs/Lab_16_PolicyAuthorization/Lab_16_PolicyAuthorization.csproj" />
     <Project Path="Labs/Lab_17_SkipTakePaging/Lab_17_SkipTakePaging.csproj" />
     <Project Path="Labs/Lab_18_StructuredLogging/Lab_18_StructuredLogging.csproj" />

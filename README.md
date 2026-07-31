@@ -19,7 +19,7 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 04 | N+1 Problemi | [`Labs/Lab_04_NPlusOne`](Labs/Lab_04_NPlusOne) | ✅ |
 | 05 | DI Scope Hataları | [`Labs/Lab_05_DiScope`](Labs/Lab_05_DiScope) | ✅ |
 | 06 | Global Exception Handling | [`Labs/Lab_06_GlobalExceptionHandling`](Labs/Lab_06_GlobalExceptionHandling) | ✅ |
-| 07 | C# Record Types | `Labs/Lab_07_...` | Faz 4 |
+| 07 | C# Record Types | [`Labs/Lab_07_RecordTypes`](Labs/Lab_07_RecordTypes) | ✅ |
 | 08 | CancellationToken | [`Labs/Lab_08_CancellationToken`](Labs/Lab_08_CancellationToken) | ✅ |
 | 09 | HttpClient / Socket Exhaustion | [`Labs/Lab_09_HttpClientSockets`](Labs/Lab_09_HttpClientSockets) | ✅ |
 | 10 | Specification Pattern | [`Labs/Lab_10_Specification`](Labs/Lab_10_Specification) | ✅ |
@@ -27,7 +27,7 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 12 | DateTime vs DateTimeOffset | [`Labs/Lab_12_DateTimeVsOffset`](Labs/Lab_12_DateTimeVsOffset) | ✅ |
 | 13 | IOptions / Snapshot / Monitor | [`Labs/Lab_13_OptionsLifetimes`](Labs/Lab_13_OptionsLifetimes) | ✅ |
 | 14 | Rate Limiting | [`Labs/Lab_14_RateLimiting`](Labs/Lab_14_RateLimiting) | ✅ |
-| 15 | Channel&lt;T&gt; | `Labs/Lab_15_...` | Faz 4 |
+| 15 | Channel&lt;T&gt; | [`Labs/Lab_15_Channel`](Labs/Lab_15_Channel) | ✅ |
 | 16 | Policy-Based Authorization | [`Labs/Lab_16_PolicyAuthorization`](Labs/Lab_16_PolicyAuthorization) | ✅ |
 | 17 | Skip/Take Sayfalama | [`Labs/Lab_17_SkipTakePaging`](Labs/Lab_17_SkipTakePaging) | ✅ |
 | 18 | Structured Logging | [`Labs/Lab_18_StructuredLogging`](Labs/Lab_18_StructuredLogging) | ✅ |
@@ -35,8 +35,11 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 20 | CORS | [`Labs/Lab_20_Cors`](Labs/Lab_20_Cors) | ✅ |
 | 21 | Output Caching | [`Labs/Lab_21_OutputCaching`](Labs/Lab_21_OutputCaching) | ✅ |
 
-Fazlar blog sırasına göre değil **ortak altyapıya** göre gruplanmıştır: aynı düzeneği
-kuran laboratuvarlar peş peşe yazılır (Faz 1 EF, Faz 2–3 host, Faz 4 saf C#).
+Yirmi bir yazının yirmi birinin de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
+yazının laboratuvarı da kısadır, ama vardır.
+
+Laboratuvarlar blog sırasına göre değil **ortak altyapıya** göre yazıldı; aynı düzeneği
+kuran laboratuvarlar peş peşe geldi (önce EF, sonra host, en son saf C#).
 
 ## Yapı
 
