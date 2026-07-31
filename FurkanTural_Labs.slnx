@@ -25,9 +25,15 @@
     <Project Path="Labs/Lab_08_CancellationToken/Lab_08_CancellationToken.csproj" />
     <Project Path="Labs/Lab_09_HttpClientSockets/Lab_09_HttpClientSockets.csproj" />
     <Project Path="Labs/Lab_10_Specification/Lab_10_Specification.csproj" />
+    <Project Path="Labs/Lab_11_MemoryVsDistributedCache/Lab_11_MemoryVsDistributedCache.csproj" />
     <Project Path="Labs/Lab_12_DateTimeVsOffset/Lab_12_DateTimeVsOffset.csproj" />
+    <Project Path="Labs/Lab_13_OptionsLifetimes/Lab_13_OptionsLifetimes.csproj" />
+    <Project Path="Labs/Lab_14_RateLimiting/Lab_14_RateLimiting.csproj" />
+    <Project Path="Labs/Lab_16_PolicyAuthorization/Lab_16_PolicyAuthorization.csproj" />
     <Project Path="Labs/Lab_17_SkipTakePaging/Lab_17_SkipTakePaging.csproj" />
     <Project Path="Labs/Lab_18_StructuredLogging/Lab_18_StructuredLogging.csproj" />
     <Project Path="Labs/Lab_19_ExecuteUpdate/Lab_19_ExecuteUpdate.csproj" />
+    <Project Path="Labs/Lab_20_Cors/Lab_20_Cors.csproj" />
+    <Project Path="Labs/Lab_21_OutputCaching/Lab_21_OutputCaching.csproj" />
   </Folder>
 </Solution>

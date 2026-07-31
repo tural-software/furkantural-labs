@@ -23,17 +23,17 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 08 | CancellationToken | [`Labs/Lab_08_CancellationToken`](Labs/Lab_08_CancellationToken) | ✅ |
 | 09 | HttpClient / Socket Exhaustion | [`Labs/Lab_09_HttpClientSockets`](Labs/Lab_09_HttpClientSockets) | ✅ |
 | 10 | Specification Pattern | [`Labs/Lab_10_Specification`](Labs/Lab_10_Specification) | ✅ |
-| 11 | Memory vs Distributed Cache | `Labs/Lab_11_...` | Faz 3 |
+| 11 | Memory vs Distributed Cache | [`Labs/Lab_11_MemoryVsDistributedCache`](Labs/Lab_11_MemoryVsDistributedCache) | ✅ |
 | 12 | DateTime vs DateTimeOffset | [`Labs/Lab_12_DateTimeVsOffset`](Labs/Lab_12_DateTimeVsOffset) | ✅ |
-| 13 | IOptions / Snapshot / Monitor | `Labs/Lab_13_...` | Faz 3 |
-| 14 | Rate Limiting | `Labs/Lab_14_...` | Faz 3 |
+| 13 | IOptions / Snapshot / Monitor | [`Labs/Lab_13_OptionsLifetimes`](Labs/Lab_13_OptionsLifetimes) | ✅ |
+| 14 | Rate Limiting | [`Labs/Lab_14_RateLimiting`](Labs/Lab_14_RateLimiting) | ✅ |
 | 15 | Channel&lt;T&gt; | `Labs/Lab_15_...` | Faz 4 |
-| 16 | Policy-Based Authorization | `Labs/Lab_16_...` | Faz 3 |
+| 16 | Policy-Based Authorization | [`Labs/Lab_16_PolicyAuthorization`](Labs/Lab_16_PolicyAuthorization) | ✅ |
 | 17 | Skip/Take Sayfalama | [`Labs/Lab_17_SkipTakePaging`](Labs/Lab_17_SkipTakePaging) | ✅ |
 | 18 | Structured Logging | [`Labs/Lab_18_StructuredLogging`](Labs/Lab_18_StructuredLogging) | ✅ |
 | 19 | ExecuteUpdateAsync | [`Labs/Lab_19_ExecuteUpdate`](Labs/Lab_19_ExecuteUpdate) | ✅ |
-| 20 | CORS | `Labs/Lab_20_...` | Faz 3 |
-| 21 | Output Caching | `Labs/Lab_21_...` | Faz 3 |
+| 20 | CORS | [`Labs/Lab_20_Cors`](Labs/Lab_20_Cors) | ✅ |
+| 21 | Output Caching | [`Labs/Lab_21_OutputCaching`](Labs/Lab_21_OutputCaching) | ✅ |
 
 Fazlar blog sırasına göre değil **ortak altyapıya** göre gruplanmıştır: aynı düzeneği
 kuran laboratuvarlar peş peşe yazılır (Faz 1 EF, Faz 2–3 host, Faz 4 saf C#).
@@ -45,13 +45,16 @@ Core/FurkanTural_Labs_Domain/            entity'ler (BaseEntity, Blog, Category,
 Signature/FurkanTural_Labs_Application/
         Diagnostics/     LabReport, Expectation, IQueryCounter  ← ölçüm düzeneği
         Specifications/  ISpecification, BaseSpecification
-Web/FurkanTural_Labs_Host/               boru hattı ölçen laboratuvarların in-process Kestrel'i
+Web/FurkanTural_Labs_Host/
+        LabsWebHost      boru hattı ölçen laboratuvarların in-process Kestrel'i
+        LabAuthentication başlık tabanlı en küçük kimlik şeması (Lab_03, Lab_16, Lab_20)
 Infrastructure/FurkanTural_Labs_Persistence/
         Contexts/        LabsDbContext
         Configurations/  IEntityTypeConfiguration'lar
         Interceptors/    QueryCountInterceptor  ← sorgu ve satır burada sayılır
         Seed/            LabsSeeder             ← sabit tohumlu veri
         Sandbox/         DataSandbox            ← veri değiştiren laboratuvarların kabı
+        Cache/           SqlCacheTable          ← dağıtık cache tablosu (Lab_11)
         Specifications/  SpecificationEvaluator
         Registration/    AddLabsPersistence / LabsHost
 Labs/Lab_NN_.../                         her yazı için tek çalıştırılabilir proje
@@ -97,9 +100,9 @@ laboratuvar kırmızı yanar ve hangi yazının artık yanlış olduğunu söyle
 
 ## Kurulum
 
-Gereken: .NET 10 SDK. Veritabanı yalnızca EF laboratuvarları için gerekir (01, 02, 04,
-10, 12, 17, 19); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve SQL Server
-istemez.
+Gereken: .NET 10 SDK. Veritabanı yalnızca veriye giden laboratuvarlar için gerekir
+(01, 02, 04, 10, 11, 12, 17, 19); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve
+SQL Server istemez.
 
 Bağlantı dizesi **repoda tutulmaz** — depo public. Tüm laboratuvarlar tek bir
 user-secrets kimliğini paylaşır, yani bir kez tanımlaman yeter:
@@ -113,7 +116,9 @@ dotnet user-secrets set "ConnectionStrings:LabsConnection" `
 Alternatif: `FTLABS_ConnectionStrings__LabsConnection` ortam değişkeni (user-secrets'ı ezer).
 
 Veritabanı ilk çalıştırmada oluşturulur ve tohumlanır; migration yoktur çünkü bu şema
-tek kullanımlıktır ve migration geçmişi tutmanın öğretici değeri yoktur.
+tek kullanımlıktır ve migration geçmişi tutmanın öğretici değeri yoktur. Lab_11'in
+kullandığı dağıtık cache tablosu da aynı veritabanında, aynı anda oluşturulur — Redis
+kurmak gerekmez, çünkü kanıtlanan özellik cache'in **süreç dışında** durmasıdır.
 
 ```powershell
 dotnet run --project Labs/Lab_04_NPlusOne

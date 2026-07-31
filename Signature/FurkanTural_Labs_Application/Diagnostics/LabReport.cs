@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 
 namespace FurkanTural_Labs_Application.Diagnostics;
 
@@ -91,6 +92,10 @@ public sealed class LabReport
     /// <summary>Sonuç tablosunu basar. Dönüş: süreç çıkış kodu (0 = kanıt tuttu).</summary>
     public int Print()
     {
+        // Tablo Türkçe ve çerçeve karakterli; Windows konsolunun varsayılan kod sayfası
+        // ikisini de bozar. Yönlendirilmiş çıktıda ayar desteklenmeyebilir, o durumda sessiz geç.
+        try { Console.OutputEncoding = Encoding.UTF8; } catch (IOException) { }
+
         var nameWidth = Math.Max(8, _results.Max(r => r.Name.Length));
         var metricWidth = Math.Max(6, _metric.Length);
         var expWidth = Math.Max(9, _results.Max(r => r.Expectation.Text.Length));

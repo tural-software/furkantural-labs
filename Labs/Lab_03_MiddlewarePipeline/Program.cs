@@ -1,7 +1,5 @@
 using FurkanTural_Labs_Application.Diagnostics;
 using FurkanTural_Labs_Host;
-using Lab_03_MiddlewarePipeline;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -99,11 +97,7 @@ return report.Print();
 static Task<LabApp> StartAsync(Action<WebApplication> configure) =>
     LabsWebHost.StartAsync(configure, builder =>
     {
-        builder.Services
-            .AddAuthentication(HeaderAuthenticationHandler.SchemeName)
-            .AddScheme<AuthenticationSchemeOptions, HeaderAuthenticationHandler>(
-                HeaderAuthenticationHandler.SchemeName, _ => { });
-
+        builder.Services.AddLabAuthentication();
         builder.Services.AddAuthorization();
     });
 
@@ -114,7 +108,7 @@ static async Task<int> StatusAsync(LabApp app, string? user)
 {
     using var request = new HttpRequestMessage(HttpMethod.Get, "/gizli");
     if (user is not null)
-        request.Headers.Add(HeaderAuthenticationHandler.HeaderName, user);
+        request.Headers.Add(LabAuthenticationHandler.UserHeader, user);
 
     var response = await app.Client.SendAsync(request);
     return (int)response.StatusCode;
