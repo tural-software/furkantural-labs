@@ -13,13 +13,13 @@ oluyor" sorusunun tek dürüst karşılığı.
 ```text
 Senaryo                            Satır  Beklenen      Süre     Bellek  Sonuç
 ────────────────────────────────  ──────  ─────────  ───────  ─────────  ─────
-1) Include(Comments)                 200  = 200        98 ms     3,4 MB  GEÇTİ
-2) + Include(Categories)           2.000  = 2000      159 ms    21,1 MB  GEÇTİ
-3) AsSplitQuery                      310  = 310        73 ms     2,2 MB  GEÇTİ
-4) Tek koleksiyon + AsSplitQuery     210  = 210        25 ms     1,2 MB  GEÇTİ
-5) Include(Comment.Blog)             200  = 200        19 ms     2,4 MB  GEÇTİ
-6) Select projeksiyonu             2.000  = 2000       34 ms     2,0 MB  GEÇTİ
-7) Select ile yalnız adet             10  = 10         18 ms     258 KB  GEÇTİ
+1) Include(Comments)                 200  = 200       128 ms     3,4 MB  GEÇTİ
+2) + Include(Categories)           2.000  = 2000      208 ms    21,1 MB  GEÇTİ
+3) AsSplitQuery                      310  = 310       105 ms     2,2 MB  GEÇTİ
+4) Tek koleksiyon + AsSplitQuery     210  = 210        34 ms     1,2 MB  GEÇTİ
+5) Include(Comment.Blog)             200  = 200        27 ms     2,4 MB  GEÇTİ
+6) Select projeksiyonu             2.000  = 2000       48 ms     2,0 MB  GEÇTİ
+7) Select ile yalnız adet             10  = 10         26 ms     257 KB  GEÇTİ
 ```
 
 Satır sayısı EF Core interceptor'ının sardığı okuyucudan gelir: `Read()` çağrılarının
@@ -75,5 +75,7 @@ Beklentiler ölçümden değil çarpım tablosundan gelir ve koda gömülüdür:
 `blog + yorum + kategori`. Yedisi de ilk koşuda tuttu.
 
 Süre sütunu koşudan koşuya değişir ve denetlenmez; denetlenen tek sayı satırdır. Bellek
-`GC.GetTotalAllocatedBytes` ile senaryo başına ölçülür ve koşular arasında gösterilen
-hassasiyette sabit kalır.
+`GC.GetTotalAllocatedBytes` ile senaryo başına ölçülür: MB ölçeğindeki altı değer sekiz
+koşuda da gösterilen hassasiyette aynı kaldı, yalnızca 7. senaryonun KB ölçeğindeki değeri
+birkaç yüz bayt oynuyor. Bu yüzden yazı o tek sayıyı kullanmaz — yeniden üretilemeyen bir
+rakam kanıt sayılmaz.
