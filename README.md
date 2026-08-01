@@ -34,8 +34,9 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 19 | ExecuteUpdateAsync | [`Labs/Lab_19_ExecuteUpdate`](Labs/Lab_19_ExecuteUpdate) | ✅ |
 | 20 | CORS | [`Labs/Lab_20_Cors`](Labs/Lab_20_Cors) | ✅ |
 | 21 | Output Caching | [`Labs/Lab_21_OutputCaching`](Labs/Lab_21_OutputCaching) | ✅ |
+| 22 | AsSplitQuery | [`Labs/Lab_22_SplitQuery`](Labs/Lab_22_SplitQuery) | ✅ |
 
-Yirmi bir yazının yirmi birinin de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
+Yirmi iki yazının yirmi ikisinin de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
 yazının laboratuvarı da kısadır, ama vardır.
 
 Laboratuvarlar blog sırasına göre değil **ortak altyapıya** göre yazıldı; aynı düzeneği

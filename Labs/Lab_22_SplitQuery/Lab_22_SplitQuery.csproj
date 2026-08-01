@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab22</Product>
+    <Description>Proof for blog post #22 — how many rows the database returns for each way of loading two collections.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab22</AssemblyTitle>
+    <AssemblyDescription>Counts the rows a second Include multiplies into the result set and what AsSplitQuery costs to undo it.</AssemblyDescription>
+    <RootNamespace>Lab_22_SplitQuery</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Content -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FurkanTural_Labs_Persistence\FurkanTural_Labs_Persistence.csproj" />
+  </ItemGroup>
+</Project>
