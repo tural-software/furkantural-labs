@@ -38,5 +38,6 @@
     <Project Path="Labs/Lab_20_Cors/Lab_20_Cors.csproj" />
     <Project Path="Labs/Lab_21_OutputCaching/Lab_21_OutputCaching.csproj" />
     <Project Path="Labs/Lab_22_SplitQuery/Lab_22_SplitQuery.csproj" />
+    <Project Path="Labs/Lab_23_QueryFilter/Lab_23_QueryFilter.csproj" />
   </Folder>
 </Solution>

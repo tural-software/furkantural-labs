@@ -35,8 +35,9 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 20 | CORS | [`Labs/Lab_20_Cors`](Labs/Lab_20_Cors) | ✅ |
 | 21 | Output Caching | [`Labs/Lab_21_OutputCaching`](Labs/Lab_21_OutputCaching) | ✅ |
 | 22 | AsSplitQuery | [`Labs/Lab_22_SplitQuery`](Labs/Lab_22_SplitQuery) | ✅ |
+| 23 | Global Query Filter | [`Labs/Lab_23_QueryFilter`](Labs/Lab_23_QueryFilter) | ✅ |
 
-Yirmi iki yazının yirmi ikisinin de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
+Yirmi üç yazının yirmi üçünün de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
 yazının laboratuvarı da kısadır, ama vardır.
 
 Laboratuvarlar blog sırasına göre değil **ortak altyapıya** göre yazıldı; aynı düzeneği
@@ -65,7 +66,7 @@ Labs/Lab_NN_.../                         her yazı için tek çalıştırılabil
 ```
 
 Katman düzeni ve isimlendirme ana monorepo ile bilerek aynıdır; burada öğrenilen şey
-oraya birebir taşınsın diye. Her laboratuvara ayrı bir beş katman verilmedi — 21 × 5
+oraya birebir taşınsın diye. Her laboratuvara ayrı bir beş katman verilmedi — 23 × 5
 proje, dersi tören altında boğardı. Paylaşılan çekirdek + laboratuvar başına tek
 çalıştırılabilir proje: aynı disiplin, gereksiz tekrar yok.
 
@@ -105,7 +106,7 @@ laboratuvar kırmızı yanar ve hangi yazının artık yanlış olduğunu söyle
 ## Kurulum
 
 Gereken: .NET 10 SDK. Veritabanı yalnızca veriye giden laboratuvarlar için gerekir
-(01, 02, 04, 10, 11, 12, 17, 19); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve
+(01, 02, 04, 10, 11, 12, 17, 19, 22, 23); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve
 SQL Server istemez.
 
 Bağlantı dizesi **repoda tutulmaz** — depo public. Tüm laboratuvarlar tek bir
