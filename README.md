@@ -36,8 +36,9 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 21 | Output Caching | [`Labs/Lab_21_OutputCaching`](Labs/Lab_21_OutputCaching) | ✅ |
 | 22 | AsSplitQuery | [`Labs/Lab_22_SplitQuery`](Labs/Lab_22_SplitQuery) | ✅ |
 | 23 | Global Query Filter | [`Labs/Lab_23_QueryFilter`](Labs/Lab_23_QueryFilter) | ✅ |
+| 24 | Async'te Kaybolan İstisnalar | [`Labs/Lab_24_AsyncExceptions`](Labs/Lab_24_AsyncExceptions) | ✅ |
 
-Yirmi üç yazının yirmi üçünün de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
+Yirmi dört yazının yirmi dördünün de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
 yazının laboratuvarı da kısadır, ama vardır.
 
 Laboratuvarlar blog sırasına göre değil **ortak altyapıya** göre yazıldı; aynı düzeneği
@@ -66,7 +67,7 @@ Labs/Lab_NN_.../                         her yazı için tek çalıştırılabil
 ```
 
 Katman düzeni ve isimlendirme ana monorepo ile bilerek aynıdır; burada öğrenilen şey
-oraya birebir taşınsın diye. Her laboratuvara ayrı bir beş katman verilmedi — 23 × 5
+oraya birebir taşınsın diye. Her laboratuvara ayrı bir beş katman verilmedi — 24 × 5
 proje, dersi tören altında boğardı. Paylaşılan çekirdek + laboratuvar başına tek
 çalıştırılabilir proje: aynı disiplin, gereksiz tekrar yok.
 

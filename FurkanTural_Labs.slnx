@@ -39,5 +39,6 @@
     <Project Path="Labs/Lab_21_OutputCaching/Lab_21_OutputCaching.csproj" />
     <Project Path="Labs/Lab_22_SplitQuery/Lab_22_SplitQuery.csproj" />
     <Project Path="Labs/Lab_23_QueryFilter/Lab_23_QueryFilter.csproj" />
+    <Project Path="Labs/Lab_24_AsyncExceptions/Lab_24_AsyncExceptions.csproj" />
   </Folder>
 </Solution>

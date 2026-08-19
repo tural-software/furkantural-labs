@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab24</Product>
+    <Description>Proof for blog post #24 — how many of three thrown exceptions reach the caller's catch block.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab24</AssemblyTitle>
+    <AssemblyDescription>Runs the same three failing jobs through eight await, blocking and fire-and-forget shapes.</AssemblyDescription>
+    <RootNamespace>Lab_24_AsyncExceptions</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+  </ItemGroup>
+</Project>
