@@ -88,6 +88,23 @@ aşımına ya da koşuya bağlı değil. 5. senaryodaki beklenmemiş task'lar ö
 sonra** gözlenir — ölçülen sayıya etkisi yoktur, amaç gözlenmemiş hataların sonraki
 senaryolara gürültü olarak taşınmamasıdır.
 
+## Ölçülmeyen ama doğrulanan bir yan bulgu
+
+5. senaryonun yazıdaki karşılığı, sahipsiz kalan hatanın .NET Core'da sessiz olduğunu
+söylüyor. .NET Framework'te bunu değiştiren bir eskalasyon politikası vardı
+(`ThrowUnobservedTaskExceptions`); .NET 10'da karşılığı olup olmadığı ayrı bir konsol
+projesiyle sınandı. Anahtar `RuntimeHostConfigurationOption` ile
+`System.Threading.Tasks.TaskScheduler.ThrowUnobservedTaskExceptions = true` olarak
+verildi ve `runtimeconfig.json`'a yazıldığı görüldü. Beş sahipsiz hatalı task üretilip üç
+tur `GC.Collect()` + `WaitForPendingFinalizers()` çalıştırıldığında
+`TaskScheduler.UnobservedTaskException` beş kez `Observed=False` ile tetiklendi —
+finalizer'lar koştu, hatalar gözlenmemiş sayıldı — ve süreç ayakta kaldı, çıkış kodu 0.
+
+Yani anahtarın .NET 10'da eskalasyon etkisi yok; sahipsiz hatayı sesli hâle getirmenin
+yolu olaya abone olmaktır. Bu deney laboratuvarın tablosuna girmedi: farklı bir birim
+ölçüyor ve bu laboratuvar tek birim ölçer. Yazıya da hiçbir sayısı taşınmadı, yalnız
+davranışı taşındı.
+
 Süre ve bellek sütunları denetlenmez ve yazıda kullanılmaz: değerler KB ölçeğinde ve
 koşudan koşuya oynuyor (5. senaryo 5–11 KB arasında geziniyor). Denetlenen tek sayı
 görülen istisna adedidir ve dört koşuda da birebir aynı çıktı.
