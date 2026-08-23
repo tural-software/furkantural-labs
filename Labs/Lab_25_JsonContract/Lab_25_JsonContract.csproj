@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab25</Product>
+    <Description>Proof for blog post #25 — how many fields survive a System.Text.Json round trip.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab25</AssemblyTitle>
+    <AssemblyDescription>Sends the same six field payment object through eight declared type and option combinations.</AssemblyDescription>
+    <RootNamespace>Lab_25_JsonContract</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+  </ItemGroup>
+</Project>
