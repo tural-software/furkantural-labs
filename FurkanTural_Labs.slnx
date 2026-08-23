@@ -42,5 +42,6 @@
     <Project Path="Labs/Lab_24_AsyncExceptions/Lab_24_AsyncExceptions.csproj" />
     <Project Path="Labs/Lab_25_JsonContract/Lab_25_JsonContract.csproj" />
     <Project Path="Labs/Lab_26_AuditInterceptor/Lab_26_AuditInterceptor.csproj" />
+    <Project Path="Labs/Lab_27_ValueConverter/Lab_27_ValueConverter.csproj" />
   </Folder>
 </Solution>

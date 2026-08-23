@@ -39,8 +39,9 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 24 | Async'te Kaybolan İstisnalar | [`Labs/Lab_24_AsyncExceptions`](Labs/Lab_24_AsyncExceptions) | ✅ |
 | 25 | System.Text.Json Sözleşmesi | [`Labs/Lab_25_JsonContract`](Labs/Lab_25_JsonContract) | ✅ |
 | 26 | Audit Interceptor | [`Labs/Lab_26_AuditInterceptor`](Labs/Lab_26_AuditInterceptor) | ✅ |
+| 27 | Value Converter | [`Labs/Lab_27_ValueConverter`](Labs/Lab_27_ValueConverter) | ✅ |
 
-Yirmi altı yazının yirmi altısının da çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
+Yirmi yedi yazının yirmi yedisinin de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
 yazının laboratuvarı da kısadır, ama vardır.
 
 Laboratuvarlar blog sırasına göre değil **ortak altyapıya** göre yazıldı; aynı düzeneği
@@ -69,7 +70,7 @@ Labs/Lab_NN_.../                         her yazı için tek çalıştırılabil
 ```
 
 Katman düzeni ve isimlendirme ana monorepo ile bilerek aynıdır; burada öğrenilen şey
-oraya birebir taşınsın diye. Her laboratuvara ayrı bir beş katman verilmedi — 26 × 5
+oraya birebir taşınsın diye. Her laboratuvara ayrı bir beş katman verilmedi — 27 × 5
 proje, dersi tören altında boğardı. Paylaşılan çekirdek + laboratuvar başına tek
 çalıştırılabilir proje: aynı disiplin, gereksiz tekrar yok.
 
@@ -109,7 +110,7 @@ laboratuvar kırmızı yanar ve hangi yazının artık yanlış olduğunu söyle
 ## Kurulum
 
 Gereken: .NET 10 SDK. Veritabanı yalnızca veriye giden laboratuvarlar için gerekir
-(01, 02, 04, 10, 11, 12, 17, 19, 22, 23, 26); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve
+(01, 02, 04, 10, 11, 12, 17, 19, 22, 23, 26, 27); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve
 SQL Server istemez.
 
 Bağlantı dizesi **repoda tutulmaz** — depo public. Tüm laboratuvarlar tek bir
