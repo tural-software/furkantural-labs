@@ -41,5 +41,6 @@
     <Project Path="Labs/Lab_23_QueryFilter/Lab_23_QueryFilter.csproj" />
     <Project Path="Labs/Lab_24_AsyncExceptions/Lab_24_AsyncExceptions.csproj" />
     <Project Path="Labs/Lab_25_JsonContract/Lab_25_JsonContract.csproj" />
+    <Project Path="Labs/Lab_26_AuditInterceptor/Lab_26_AuditInterceptor.csproj" />
   </Folder>
 </Solution>
