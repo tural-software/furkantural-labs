@@ -30,6 +30,19 @@ public sealed class DurumContext(DbContextOptions<LabsDbContext> options) : Labs
         );
         """;
 
+    /// <summary>
+    /// Metin sütuna enum'da karşılığı olmayan bir değer yazar — bir üyenin yeniden
+    /// adlandırılması, elle düzeltme ya da başka bir sürümden gelen veri sonrası
+    /// veritabanında kalabilecek değerin karşılığı. Hedef: 10 arşiv kaydı.
+    /// </summary>
+    public const string MetniBozSql = $"UPDATE {TabloAdi} SET DurumMetin = N'Arsivlendi' WHERE DurumSayi = 2;";
+
+    /// <summary>
+    /// Aynı bozulmanın sayısal sütundaki karşılığı: enum'da tanımlı olmayan bir sayı.
+    /// Hedef satırlar metin sütundan seçiliyor çünkü bu senaryoda bozulan sütun o değil.
+    /// </summary>
+    public const string SayiyiBozSql = $"UPDATE {TabloAdi} SET DurumSayi = 99 WHERE DurumMetin = N'Arsiv';";
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);

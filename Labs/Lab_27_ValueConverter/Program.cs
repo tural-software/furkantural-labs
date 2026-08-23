@@ -98,6 +98,26 @@ await report.MeasureAsync(
     note: "Aynı yazım int sütunda da aynı sayıyı veriyor: saklama tipi değişse bile sonuç " +
           "değişmiyor. Aralık sorgusunun aksine bu ifade saklamadan bağımsız.");
 
+// ── 9–10. Saklanan değerin kendisi tanınmazsa ────────────────────────────────
+// Veritabanında enum'da karşılığı olmayan bir değer kalabilir: bir üye yeniden adlandırılır,
+// veri başka bir sürümden gelir, biri elle düzeltir. İki saklama biçimi bu duruma aynı
+// tepkiyi vermiyor. Ölçülen şey okumanın kaç satır getirebildiği; 30 satırın yalnız 10'u bozuk.
+await report.MeasureAsync(
+    "9) metin sütun, tanınmayan değer",
+    Expectation.Exactly(0),
+    () => OkunanSatirAsync(DurumContext.MetniBozSql),
+    note: "Sütunda N'Arsivlendi' yazıyor, enum'da böyle bir üye yok. EF çeviremediği değeri " +
+          "varsayılana düşürmüyor, okuma anında InvalidOperationException fırlatıyor. Bozuk 10 " +
+          "satır yüzünden sağlam 20 satır da elde edilemiyor: sorgunun tamamı düşüyor.");
+
+await report.MeasureAsync(
+    "10) int sütun, tanınmayan değer",
+    Expectation.Exactly(GrupBoyu * 3),
+    () => OkunanSatirAsync(DurumContext.SayiyiBozSql),
+    note: "Aynı bozulma sayısal sütunda hiç fark edilmiyor: enum'un temel tipi int olduğu ve " +
+          "C# tanımsız değerleri taşımaya izin verdiği için 99 sorunsuz okunuyor. 30 satırın " +
+          "hepsi geliyor — ama 10'u artık hiçbir üyeye karşılık gelmeyen bir değer taşıyor.");
+
 return report.Print();
 
 // Bir sorguyu kendi transaction'ında çalıştırır ve sonunda geri alır. Ölçüm tablosu da
@@ -110,6 +130,30 @@ async Task<int> OlcAsync(Func<IQueryable<Kayit>, IQueryable<Kayit>> sorgu)
     {
         await KurAsync(ctx);
         return await sorgu(ctx.Set<Kayit>().AsNoTracking()).CountAsync();
+    });
+}
+
+// Fikstürü kurar, verilen SQL ile bozar ve tabloyu baştan sona okumayı dener. Ölçüm elde
+// edilen satır sayısı: materyalizasyon düşerse hiçbir satır elde edilemez, yani 0.
+async Task<int> OkunanSatirAsync(string bozSql)
+{
+    await using var db = new DurumContext(secenekler);
+
+    return await DataSandbox.RollbackAsync(db, async ctx =>
+    {
+        await KurAsync(ctx);
+        await ctx.Database.ExecuteSqlRawAsync(bozSql);
+
+        try
+        {
+            return (await ctx.Set<Kayit>().AsNoTracking().ToListAsync()).Count;
+        }
+        catch (InvalidOperationException)
+        {
+            // Hata sunucudan değil çeviriden geliyor: SQL çalıştı, satırlar okundu, EF
+            // değeri enum'a dönüştüremedi. Kısmi sonuç diye bir şey yok.
+            return 0;
+        }
     });
 }
 
