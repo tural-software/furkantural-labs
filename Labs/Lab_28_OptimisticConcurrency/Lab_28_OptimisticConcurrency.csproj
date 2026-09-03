@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab28</Product>
+    <Description>Proof for blog post #28 — what a shared counter ends up at when ten writers each add one.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab28</AssemblyTitle>
+    <AssemblyDescription>Reads the final counter value after ten read-modify-write writers under each concurrency strategy.</AssemblyDescription>
+    <RootNamespace>Lab_28_OptimisticConcurrency</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Content -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FurkanTural_Labs_Persistence\FurkanTural_Labs_Persistence.csproj" />
+  </ItemGroup>
+</Project>

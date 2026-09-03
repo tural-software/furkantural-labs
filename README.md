@@ -40,8 +40,9 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 25 | System.Text.Json Sözleşmesi | [`Labs/Lab_25_JsonContract`](Labs/Lab_25_JsonContract) | ✅ |
 | 26 | Audit Interceptor | [`Labs/Lab_26_AuditInterceptor`](Labs/Lab_26_AuditInterceptor) | ✅ |
 | 27 | Value Converter | [`Labs/Lab_27_ValueConverter`](Labs/Lab_27_ValueConverter) | ✅ |
+| 28 | Optimistic Concurrency | [`Labs/Lab_28_OptimisticConcurrency`](Labs/Lab_28_OptimisticConcurrency) | ✅ |
 
-Yirmi yedi yazının yirmi yedisinin de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
+Yirmi sekiz yazının yirmi sekizinin de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
 yazının laboratuvarı da kısadır, ama vardır.
 
 Laboratuvarlar blog sırasına göre değil **ortak altyapıya** göre yazıldı; aynı düzeneği
@@ -110,7 +111,7 @@ laboratuvar kırmızı yanar ve hangi yazının artık yanlış olduğunu söyle
 ## Kurulum
 
 Gereken: .NET 10 SDK. Veritabanı yalnızca veriye giden laboratuvarlar için gerekir
-(01, 02, 04, 10, 11, 12, 17, 19, 22, 23, 26, 27); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve
+(01, 02, 04, 10, 11, 12, 17, 19, 22, 23, 26, 27, 28); boru hattını ölçenler kendi sunucusunu ayağa kaldırır ve
 SQL Server istemez.
 
 Bağlantı dizesi **repoda tutulmaz** — depo public. Tüm laboratuvarlar tek bir

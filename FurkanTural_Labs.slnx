@@ -43,5 +43,6 @@
     <Project Path="Labs/Lab_25_JsonContract/Lab_25_JsonContract.csproj" />
     <Project Path="Labs/Lab_26_AuditInterceptor/Lab_26_AuditInterceptor.csproj" />
     <Project Path="Labs/Lab_27_ValueConverter/Lab_27_ValueConverter.csproj" />
+    <Project Path="Labs/Lab_28_OptimisticConcurrency/Lab_28_OptimisticConcurrency.csproj" />
   </Folder>
 </Solution>
