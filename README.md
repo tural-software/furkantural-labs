@@ -41,8 +41,9 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 26 | Audit Interceptor | [`Labs/Lab_26_AuditInterceptor`](Labs/Lab_26_AuditInterceptor) | ✅ |
 | 27 | Value Converter | [`Labs/Lab_27_ValueConverter`](Labs/Lab_27_ValueConverter) | ✅ |
 | 28 | Optimistic Concurrency | [`Labs/Lab_28_OptimisticConcurrency`](Labs/Lab_28_OptimisticConcurrency) | ✅ |
+| 29 | Retry ve Idempotency | [`Labs/Lab_29_RetryIdempotency`](Labs/Lab_29_RetryIdempotency) | ✅ |
 
-Yirmi sekiz yazının yirmi sekizinin de çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
+Yirmi dokuz yazının yirmi dokuzunun da çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
 yazının laboratuvarı da kısadır, ama vardır.
 
 Laboratuvarlar blog sırasına göre değil **ortak altyapıya** göre yazıldı; aynı düzeneği
