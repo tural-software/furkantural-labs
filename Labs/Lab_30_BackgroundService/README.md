@@ -75,10 +75,26 @@ koşturduğu ve host'un açılışı buna bağladığı varsayılmıştı. Ölç
 şey beklenti değil, **gerekçeydi**; senaryolar ölçümün gösterdiği davranışa göre yeniden
 kuruldu.
 
-Sayaçla alınan bu sonuç ayrıca duvar saatiyle de doğrulandı. `ExecuteAsync`'in ilk
-`await`'inden önce 1,5 saniyelik bloklayıcı bir ön ek taşıyan bir işçiyle `StartAsync`
-**4 ms** sürdü ve `ExecuteAsync`'e girildiği teyit edildi — yani host metoda giriyor ama
-senkron ön ekini beklemiyor. Bu kontrol denetlenen tabloda yer almıyor, çünkü tablo süre
+Buna şu itiraz yapılabilir: "işler `await`'li olduğu için host ilk iç `await`'te serbest
+kalmıştır, dolayısıyla 0 bir şey kanıtlamaz." İtiraz bu laboratuvar için geçerli değil —
+1 ve 2. senaryolarda iş `Interlocked.Increment`'tir, döngüde tek bir `await` yoktur. Host
+açılışı `ExecuteAsync`'e bağlasaydı o döngünün bitmiş olması zorunluydu.
+
+Mekanizma ayrıca bu laboratuvarın düzeneğinden bağımsız, izole bir koşumla doğrulandı.
+`ExecuteAsync`'i tamamen senkron olan (`Thread.Sleep(1500)` ve ardından sayaç döngüsü,
+ilk `await`'ten önce) tek servisli bir host'ta:
+
+```text
+StartAsync süresi          : 6 ms
+StartAsync'i çağıran thread: 2
+ExecuteAsync'in thread'i   : 6      → farklı thread
+StartAsync anında sayaç    : 0
+ExecuteAsync'e girildi mi  : True
+2,5 sn sonra sayaç         : 10
+```
+
+Yani host `ExecuteAsync`'e giriyor ama onu **başka bir thread'e gönderiyor** ve senkron ön
+ekini beklemiyor. Bu kontrol denetlenen tabloda yer almıyor, çünkü tablo süre ve thread
 değil iş ölçüyor; buraya gerekçenin dayanağı olarak not edilmiştir.
 
 **4. senaryo host'u `RunAsync` ile sürüyor** ve bu bilinçli bir seçim. Elle `StartAsync` ile
