@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab30</Product>
+    <Description>Proof for blog post #30 — how host semantics decide how much background work actually completes.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab30</AssemblyTitle>
+    <AssemblyDescription>Counts completed work items for a BackgroundService under startup, exception and shutdown semantics.</AssemblyDescription>
+    <RootNamespace>Lab_30_BackgroundService</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Framework References -->
+  <!-- Yalnızca barındırma altyapısı için: Host.CreateApplicationBuilder, BackgroundService
+       ve HostOptions bu çerçeve referansıyla gelir, ayrı bir NuGet paketi gerekmez. -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+  </ItemGroup>
+</Project>
