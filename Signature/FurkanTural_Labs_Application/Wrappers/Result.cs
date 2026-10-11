@@ -1,16 +1,31 @@
+using System.Text.Json.Serialization;
+
 namespace FurkanTural_Labs_Application.Wrappers;
 
 /// <summary>
-/// Monorepo'daki <c>FurkanTural_Application.Wrappers.Result</c> ile birebir aynı sözleşme.
+/// Monorepo'daki <c>FurkanTural_Application.Wrappers.Result</c> sözleşmesinin kopyası.
 /// Servis katmanı gerektiren laboratuvarlar (Lab_10 Specification, Lab_06 exception handling)
 /// gerçek projedeki dönüş tipini kullansın diye buraya taşındı.
+/// <para>
+/// <see cref="InternalMessage"/> geliştirici teşhisidir ve <see cref="JsonIgnoreAttribute"/> ile
+/// süreç içinde kalır; istemciye çıkan tek hata metni <see cref="Errors"/>'tır. Bu, Lab_06'nın
+/// anlattığı şeyin ta kendisidir: o lab, mesajında bağlantı dizesi geçen bir istisna atıp
+/// istemciye hiçbir iç ayrıntının sızmadığını gösterir. Zarf kendi başına sızdırırsa ders çürür.
+/// </para>
+/// <para>
+/// Tek bilinen ayrışma <see cref="ErrorCode"/>'dur: monorepo bu alanı kaldırdı, buradaki kopya
+/// henüz taşıyor. Kaldırılması gerekiyorsa <c>Fail</c> aşırı yüklemelerinin imzaları da değişir.
+/// </para>
 /// </summary>
 public class Result
 {
     public bool Success { get; protected init; }
     public bool IsFailure => !Success;
     public string Message { get; protected init; } = string.Empty;
+
+    [JsonIgnore]
     public string InternalMessage { get; protected init; } = string.Empty;
+
     public string ErrorCode { get; protected init; } = string.Empty;
     public int StatusCode { get; protected init; } = 200;
     public List<string> Errors { get; protected init; } = [];
