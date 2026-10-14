@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab31</Product>
+    <Description>Proof for blog post #31 — how the Data Protection key ring decides which already-issued cookies survive a restart.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab31</AssemblyTitle>
+    <AssemblyDescription>Counts how many protected payloads still unprotect after the key ring is moved, renamed, rotated, revoked or lost.</AssemblyDescription>
+    <RootNamespace>Lab_31_DataProtectionKeyRing</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Framework References -->
+  <!-- Yalnızca Data Protection için: AddDataProtection, PersistKeysToFileSystem,
+       ProtectKeysWithDpapi ve IKeyManager bu çerçeve referansıyla gelir. -->
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+  </ItemGroup>
+</Project>

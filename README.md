@@ -43,6 +43,7 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 28 | Optimistic Concurrency | [`Labs/Lab_28_OptimisticConcurrency`](Labs/Lab_28_OptimisticConcurrency) | ✅ |
 | 29 | Retry ve Idempotency | [`Labs/Lab_29_RetryIdempotency`](Labs/Lab_29_RetryIdempotency) | ✅ |
 | 30 | BackgroundService | [`Labs/Lab_30_BackgroundService`](Labs/Lab_30_BackgroundService) | ✅ |
+| 31 | Data Protection anahtar halkası | [`Labs/Lab_31_DataProtectionKeyRing`](Labs/Lab_31_DataProtectionKeyRing) | ✅ |
 
 Otuz yazının otuzunun da çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
 yazının laboratuvarı da kısadır, ama vardır.

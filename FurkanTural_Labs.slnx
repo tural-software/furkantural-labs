@@ -46,5 +46,6 @@
     <Project Path="Labs/Lab_28_OptimisticConcurrency/Lab_28_OptimisticConcurrency.csproj" />
     <Project Path="Labs/Lab_29_RetryIdempotency/Lab_29_RetryIdempotency.csproj" />
     <Project Path="Labs/Lab_30_BackgroundService/Lab_30_BackgroundService.csproj" />
+    <Project Path="Labs/Lab_31_DataProtectionKeyRing/Lab_31_DataProtectionKeyRing.csproj" />
   </Folder>
 </Solution>
