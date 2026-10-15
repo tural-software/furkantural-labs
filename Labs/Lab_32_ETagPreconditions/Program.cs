@@ -5,12 +5,17 @@ using FurkanTural_Labs_Host;
 using Lab_32_ETagPreconditions;
 using Microsoft.Net.Http.Headers;
 
-// Her senaryoda iki istemci aynı kaydı AYNI sürümden okuyup değiştirmeye çalışıyor. Kayıt
-// aynı, okuma anı aynı, gönderilen gövde aynı. Değişen tek şey sunucunun ön koşulu nasıl
-// ele aldığı ve istemcinin elinde hangi doğrulayıcının olduğu.
+// Her senaryoda tek bir kayda iki yazma denemesi gidiyor. Kayıt aynı, gönderilen gövde
+// aynı. Değişen tek şey sunucunun ön koşulu nasıl ele aldığı ve istemcinin elinde hangi
+// doğrulayıcının olduğu.
+//
+// Denemelerin kime ait olduğu senaryoya göre değişir ve bu bilinçli: 1, 2, 3 ve 6'da aynı
+// sürümü okumuş iki istemci yazıyor, 4'te hiç okuma yapılmıyor, 7 ve 8'de tek istemci üst
+// üste iki kez yazıyor. Son ikisinin derdi başka bir istemci değil, istemcinin kendi
+// yazmasının elindeki doğrulayıcıyı bayatlatması.
 //
 // Ölçülen şey kabul edilen yazma sayısı. İki yazmanın ikisi de kabul edildiyse biri
-// sessizce kayboldu demektir — o yüzden burada "2" iyi haber değil.
+// sessizce kayboldu demektir — o yüzden burada "2" tek başına iyi haber değil.
 //
 // Beklentiler ölçümden değil HTTP sözleşmesinden (RFC 9110) geliyor:
 //   · ön koşul okunmazsa son yazan kazanır, ikisi de kabul edilir       → 2
@@ -30,10 +35,10 @@ await using var sikiEtagsiz = await Sunucu.BaslatAsync(depo, OnKosul.Uygula, yan
 await using var zorunlu = await Sunucu.BaslatAsync(depo, OnKosul.Zorunlu);
 
 var report = new LabReport(
-    title: "Lab_32 — ETag ve If-Match: iki istemci aynı kaydı değiştirince kaç yazma kabul ediliyor",
-    claim: "Her senaryoda iki istemci aynı kaydı aynı sürümden okuyup değiştirmeye çalışıyor. " +
-           "Değişen tek şey sunucunun ön koşulu ele alışı ve istemcinin doğrulayıcısı; " +
-           "ölçülen şey kabul edilen yazma sayısı.",
+    title: "Lab_32 — ETag ve If-Match: aynı kayda giden iki yazmanın kaçı kabul ediliyor",
+    claim: "Her senaryoda tek bir kayda iki yazma denemesi gidiyor. Değişen tek şey " +
+           "sunucunun ön koşulu ele alışı ve istemcinin elindeki doğrulayıcı; ölçülen şey " +
+           "kabul edilen yazma sayısı.",
     metric: "Kabul edilen");
 
 // ── 1–2. Ön koşulun olması ile olmaması ─────────────────────────────────────
@@ -42,7 +47,8 @@ await report.MeasureAsync(
     Expectation.Exactly(2),
     OnKosulsuzAsync,
     note: "İki yazma da kabul edildi ve kayıtta yalnız ikincisi duruyor. Birinci istemci " +
-          "200 aldı, işinin kaybolduğunu öğrenmesinin hiçbir yolu yok. Sessiz kayıp budur.");
+          "başarı yanıtı aldı, işinin kaybolduğunu öğrenmesinin hiçbir yolu yok. Sessiz " +
+          "kayıp budur.");
 
 await report.MeasureAsync(
     "2) İkisi de aynı doğrulayıcıyı gönderiyor",

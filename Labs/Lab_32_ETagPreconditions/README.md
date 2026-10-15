@@ -4,9 +4,14 @@
 
 ## İddia
 
-Her senaryoda iki istemci aynı kaydı **aynı sürümden** okuyup değiştirmeye çalışıyor.
-Kayıt aynı, okuma anı aynı, gönderilen gövde aynı. Değişen tek şey sunucunun ön koşulu
-nasıl ele aldığı ve istemcinin elinde hangi doğrulayıcının olduğu.
+Her senaryoda **tek bir kayda iki yazma denemesi** gidiyor. Kayıt aynı, gönderilen gövde
+aynı. Değişen tek şey sunucunun ön koşulu nasıl ele aldığı ve istemcinin elinde hangi
+doğrulayıcının olduğu.
+
+Denemelerin kime ait olduğu senaryoya göre değişir ve bu bilinçli: 1, 2, 3 ve 6'da aynı
+sürümü okumuş **iki istemci** yazıyor, 4'te hiç okuma yapılmıyor, 7 ve 8'de **tek istemci**
+üst üste iki kez yazıyor. Son ikisinin derdi başka bir istemci değil, istemcinin kendi
+yazmasının elindeki doğrulayıcıyı bayatlatması.
 
 Ölçülen şey kabul edilen yazma sayısı. İki yazmanın ikisi de kabul edildiyse biri sessizce
 kayboldu demektir — bu tabloda **2 iyi haber değil**, tek başına bir şey de söylemiyor.
@@ -80,10 +85,11 @@ Beklentiler ölçümden değil **HTTP sözleşmesinden** (RFC 9110) geliyor ve k
 
 Her senaryo **kendi kayıt anahtarını** kullanır, bu yüzden senaryolar birbirinin sürümünü
 görmez ve sıraya bağlı değildir. Kurulumun gerçekten kurulduğu her senaryoda ayrıca
-denetlenir ve kurulmadıysa senaryo fırlatır: iki istemcinin aynı sürümü okuduğu, 1 ve 6'da
-son değerin ikinci istemciye ait olduğu, 2'de birincinin yazmasının korunduğu, 3'te iki
-yazmanın gerçekten uygulandığı, 7'de yanıtın `ETag` taşımadığı, 8'de taşıdığı ve yeni
-olduğu. Bu denetimler olmasa bir senaryo doğru sayıyı yanlış sebeple verebilirdi.
+denetlenir ve kurulmadıysa senaryo fırlatır: 1'de iki istemcinin gerçekten aynı sürümü
+okuduğu, 1 ve 6'da son değerin ikinci istemciye ait olduğu, 2'de birincinin yazmasının
+korunduğu, 3'te iki yazmanın gerçekten uygulandığı, 4'te gelen kodun `412` değil `428`
+olduğu, 7'de yanıtın `ETag` taşımadığı, 8'de taşıdığı ve yeni olduğu. Bu denetimler olmasa
+bir senaryo doğru sayıyı yanlış sebeple verebilirdi.
 
 **5. senaryonun kendi içinde bir kontrolü var.** Zayıf doğrulayıcının reddi iki şeyden
 gelebilirdi: zayıflık ya da bayatlık. Ayırmak için, ölçüm bittikten sonra aynı sürümün
