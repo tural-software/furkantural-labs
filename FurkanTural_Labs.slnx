@@ -47,5 +47,6 @@
     <Project Path="Labs/Lab_29_RetryIdempotency/Lab_29_RetryIdempotency.csproj" />
     <Project Path="Labs/Lab_30_BackgroundService/Lab_30_BackgroundService.csproj" />
     <Project Path="Labs/Lab_31_DataProtectionKeyRing/Lab_31_DataProtectionKeyRing.csproj" />
+    <Project Path="Labs/Lab_32_ETagPreconditions/Lab_32_ETagPreconditions.csproj" />
   </Folder>
 </Solution>

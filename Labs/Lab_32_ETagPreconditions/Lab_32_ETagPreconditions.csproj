@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Metadata -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Product>FurkanTural.Labs.Lab32</Product>
+    <Description>Proof for blog post #32 — how many writes a server accepts when two clients edit the same record, depending on how it handles HTTP preconditions.</Description>
+  </PropertyGroup>
+
+  <!-- Assembly information -->
+  <PropertyGroup>
+    <AssemblyTitle>FurkanTural.Labs.Lab32</AssemblyTitle>
+    <AssemblyDescription>Counts accepted writes under ignored, honoured and required If-Match, weak validators, If-Match star and a PUT response that omits the new ETag.</AssemblyDescription>
+    <RootNamespace>Lab_32_ETagPreconditions</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Versioning -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Signature\FurkanTural_Labs_Application\FurkanTural_Labs_Application.csproj" />
+    <ProjectReference Include="..\..\Web\FurkanTural_Labs_Host\FurkanTural_Labs_Host.csproj" />
+  </ItemGroup>
+</Project>

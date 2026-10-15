@@ -44,6 +44,7 @@ laboratuvarlar **yanlışı çalıştırıp maliyetini gösterir**, sonra doğru
 | 29 | Retry ve Idempotency | [`Labs/Lab_29_RetryIdempotency`](Labs/Lab_29_RetryIdempotency) | ✅ |
 | 30 | BackgroundService | [`Labs/Lab_30_BackgroundService`](Labs/Lab_30_BackgroundService) | ✅ |
 | 31 | Data Protection anahtar halkası | [`Labs/Lab_31_DataProtectionKeyRing`](Labs/Lab_31_DataProtectionKeyRing) | ✅ |
+| 32 | ETag ve If-Match | [`Labs/Lab_32_ETagPreconditions`](Labs/Lab_32_ETagPreconditions) | ✅ |
 
 Otuz yazının otuzunun da çalışan bir kanıtı var. Az ya da çok demeden: kısa bir
 yazının laboratuvarı da kısadır, ama vardır.
